@@ -12,9 +12,9 @@ const Landing = () => {
         <span className="text-center text-white/50">OR</span>
         <Link to="/vets" className="text-center text-white font-semibold">Continue as Guest</Link>
       </div>
-      <img src={landingImage} alt="Vet Appointments App" className="absolute top-1/4 left-1/2 transform -translate-x-1/2" />
-      <h1 className="z-10 text-3xl text-white font-bold drop-shadow-lg relative top-1/2 self-center">Vet Appointments App</h1>
-      <Link to="vets" class="flex justify-between items-center bg-citrus-500 text-white p-2 w-4/6 self-center relative top-2/3 shadow-lg border border-citrus-500/95 text-center rounded-full font-semibold">
+      <img src={landingImage} alt="Vet Appointments App" className="absolute top-1/4 sm:top-20 left-1/2 transform -translate-x-1/2 sm:w-1/2" />
+      <h1 className="z-10 text-3xl text-white font-bold drop-shadow-lg relative top-1/3 self-center">Vet Appointments App</h1>
+      <Link to="vets" class="flex justify-between items-center bg-citrus-500 text-white p-2 w-4/6 sm:w-1/2 self-center relative top-2/3 sm:top-60 shadow-lg border border-citrus-500/95 text-center rounded-full font-semibold">
         <IoPawSharp className="text-2xl" />
         Find a Vet
         <IoChevronForward className="text-2xl" />
