@@ -1,10 +1,33 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   user: null,
   authPopupOpen: false,
 };
+
+export const signInUser = createAsyncThunk(
+  'auth/signInUser',
+  async (name) => {
+    const body = {
+      user: {
+        name,
+      },
+    };
+
+    const response = await fetch('http://localhost:3000/users/create', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(body),
+      method: 'POST',
+    });
+    const data = await response.json();
+    return data;
+  },
+);
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -15,6 +38,12 @@ export const authSlice = createSlice({
     toggleAuthPopup: (state) => {
       state.authPopupOpen = !state.authPopupOpen;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(signInUser.fulfilled, (state, { payload }) => {
+      const [user] = payload;
+      state.user = user;
+    });
   },
 });
 
