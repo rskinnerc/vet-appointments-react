@@ -38,15 +38,18 @@ export const authSlice = createSlice({
     toggleAuthPopup: (state) => {
       state.authPopupOpen = !state.authPopupOpen;
     },
+    signOut: (state) => {
+      state.user = null;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(signInUser.fulfilled, (state, { payload }) => {
-      const [user] = payload;
-      state.user = user;
+      state.user = payload;
+      state.authPopupOpen = false;
     });
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser, toggleAuthPopup } = authSlice.actions;
+export const { setUser, toggleAuthPopup, signOut } = authSlice.actions;
 export default authSlice.reducer;

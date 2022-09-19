@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
-import AuthPopUp from './authPopUp';
+import AuthPopUp from './AuthPopUp';
 
 const Layout = () => {
   const location = useLocation();
