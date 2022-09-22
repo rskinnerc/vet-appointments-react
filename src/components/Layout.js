@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
+import NavMenu from './NavMenu';
 import AuthPopUp from './AuthPopUp';
 
 const Layout = () => {
@@ -7,9 +8,9 @@ const Layout = () => {
   const authPopupOpen = useSelector((state) => state.auth.authPopupOpen);
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen flex">
       {location.pathname !== '/' && (
-        <h1>Layout Navigation</h1>
+        <NavMenu />
       )}
       <Outlet />
       {authPopupOpen && <AuthPopUp />}
