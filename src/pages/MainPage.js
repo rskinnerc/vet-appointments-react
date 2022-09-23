@@ -14,7 +14,10 @@ const MainPage = () => {
 
   return (
     <section className="flex flex-col items-center w-full md:w-10/12 pb-20">
-      <h1 className="text-5xl md:text-6xl font-bold text-center mt-16 md:self-end md:mr-24 md:mt-36">LATEST VETS</h1>
+      <div className="text-center mt-16 md:self-end md:mr-24 md:mt-36">
+        <h1 className="text-5xl md:text-6xl font-bold">LATEST VETS</h1>
+        <span className="mt-2 text-xl text-gray-400">Please select a vet</span>
+      </div>
       <div className="w-full relative flex justify-center mt-14 md:mt-24">
         <div
           id="slider"
