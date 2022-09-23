@@ -28,7 +28,7 @@ const handlers = [
         id: 2,
         name: 'Jane Doe',
         experience: 10,
-        specialization: 'Ophtalmology',
+        specialization: 'Cardiology',
         price: 100,
         description: 'Jane description text',
       },
