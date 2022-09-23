@@ -20,12 +20,9 @@ describe('the main page', () => {
       </Provider>,
     );
 
-    const xpr = await screen.queryByText('Experience:', { exact: false });
-    const spc = await screen.queryByText('Specialization:', { exact: false });
-    const prc = await screen.queryByText('Consultation Price:', { exact: false });
-    expect(xpr).toHaveLength(5);
-    expect(spc).toHaveLength(5);
-    expect(prc).toHaveLength(5);
+    const dsc = await screen.findAllByTitle('description', { exact: false });
+
+    expect(dsc.length).toBeGreaterThan(0);
   });
 
   it('should show the navigation menu', async () => {
