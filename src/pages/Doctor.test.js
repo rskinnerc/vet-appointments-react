@@ -17,10 +17,10 @@ describe('the Doctor details page', () => {
     );
 
     expect(await screen.findByText('Dr. John Doe')).toBeInTheDocument();
-    expect(await screen.findByText('Experience: 5 years', { exact: false })).toBeInTheDocument();
-    expect(await screen.findByText('Specialization: Ophtalmology', { exact: false })).toBeInTheDocument();
-    expect(await screen.findByText('Price: $50', { exact: false })).toBeInTheDocument();
-    expect(await screen.findByText('Set Appointment', { exact: false })).toBeInTheDocument();
+    expect(await screen.findByText('5 years', { exact: false })).toBeInTheDocument();
+    expect(await screen.findByText('Ophtalmology', { exact: false })).toBeInTheDocument();
+    expect(await screen.findByText('$50', { exact: false })).toBeInTheDocument();
+    expect(await screen.findByText('Reserve Appointment', { exact: false })).toBeInTheDocument();
     expect(await screen.findByText('John description text', { exact: false })).toBeInTheDocument();
   });
 
@@ -34,10 +34,10 @@ describe('the Doctor details page', () => {
     );
 
     expect(await screen.findByText('Dr. Jane Doe')).toBeInTheDocument();
-    expect(await screen.findByText('Experience: 10 years', { exact: false })).toBeInTheDocument();
-    expect(await screen.findByText('Specialization: Cardiology', { exact: false })).toBeInTheDocument();
-    expect(await screen.findByText('Price: $100', { exact: false })).toBeInTheDocument();
-    expect(await screen.findByText('Set Appointment', { exact: false })).toBeInTheDocument();
+    expect(await screen.findByText('10 years', { exact: false })).toBeInTheDocument();
+    expect(await screen.findByText('Cardiology', { exact: false })).toBeInTheDocument();
+    expect(await screen.findByText('$100', { exact: false })).toBeInTheDocument();
+    expect(await screen.findByText('Reserve Appointment', { exact: false })).toBeInTheDocument();
     expect(await screen.findByText('Jane description text', { exact: false })).toBeInTheDocument();
   });
 });
