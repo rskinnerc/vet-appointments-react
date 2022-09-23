@@ -31,7 +31,7 @@ const MainPage = () => {
                     <img className="rounded-full w-60 h-60 max-w-fit" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="Avatar" />
                     <div className="p-6 mt-2 text-center">
                       <h5 className="text-gray-900 text-2xl font-medium mb-5">{doctor.name}</h5>
-                      <p className="text-gray-700 text-sm mb-2 whitespace-normal">
+                      <p title="description" className="text-gray-700 text-sm mb-2 whitespace-normal">
                         {doctor.description}
                       </p>
                     </div>
