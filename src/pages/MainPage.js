@@ -9,7 +9,7 @@ const MainPage = () => {
 
   useEffect(() => {
     dispatch(getDoctors());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -24,32 +24,18 @@ const MainPage = () => {
             doctors.map((doctor) => (
               <div className="flex justify-center inline-block p-2" key={doctor.id}>
                 <div className="max-w-sm hover:scale-105 ease-in-out duration-300 flex flex-col items-center">
-                  <img className="rounded-full w-60 h-60" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="Avatar" />
-                  <div className="p-6 mt-2 text-center">
-                    <h5 className="text-gray-900 text-2xl font-medium mb-5">{doctor.name}</h5>
-                    <p className="text-gray-700 text-sm mb-2 whitespace-normal">
-                      Experience:
-                      {' '}
-                      {doctor.experience}
-                      {' '}
-                      Years
-                    </p>
-                    <p className="text-gray-700 text-sm mb-2 whitespace-normal">
-                      Specialization:
-                      {' '}
-                      {doctor.specialization}
-                    </p>
-                    <p className="text-gray-700 text-sm mb-9 whitespace-normal">
-                      Consultation Price:
-                      {' '}
-                      {doctor.price}
-                      {' '}
-                      USD
-                    </p>
-                    <Link href="/appointments" className="inline-block px-6 py-2.5 bg-citrus-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-citrus-700 hover:shadow-lg focus:bg-citrus-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-citrus-800 active:shadow-lg transition duration-150 ease-in-out mt-auto">
-                      Make an Appointment
-                    </Link>
-                  </div>
+                  <Link to={`/doctors/${doctor.id}`}>
+                    <img className="rounded-full w-60 h-60 max-w-fit" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="Avatar" />
+                    <div className="p-6 mt-2 text-center">
+                      <h5 className="text-gray-900 text-2xl font-medium mb-5">{doctor.name}</h5>
+                      <p className="text-gray-700 text-sm mb-2 whitespace-normal">
+                        {doctor.description}
+                      </p>
+                    </div>
+                  </Link>
+                  <Link to={`/new-appointment/${doctor.id}`} className="inline-block px-6 py-2 bg-citrus-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-citrus-700 hover:shadow-lg focus:bg-citrus-700 transition duration-150 ease-in-out mt-auto">
+                    Make an Appointment
+                  </Link>
                 </div>
               </div>
             ))
