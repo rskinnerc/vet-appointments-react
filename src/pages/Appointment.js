@@ -32,8 +32,8 @@ const Appointment = () => {
   };
 
   return (
-    <section className="flex flex-col items-center w-full md:w-10/12 pb-20">
-      <h1 className="text-5xl md:text-6xl font-bold text-center mt-16 md:self-end md:mr-24 md:mt-36">MAKE AN APPOINTMENT</h1>
+    <section className="flex flex-col items-center w-full lg:w-10/12 pb-20">
+      <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center mt-16 lg:self-end lg:mr-24 lg:mt-36">MAKE AN APPOINTMENT</h1>
       <div className="w-full relative flex justify-around mt-14 md:mt-24">
         <form onSubmit={(e) => newAppointment(e)} action="" className="w-full flex flex-col items-center mt-3">
           <div className="w-full relative flex flex-col md:flex-row justify-around items-center">
