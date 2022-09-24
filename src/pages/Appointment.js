@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+/* eslint-disable eqeqeq */
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getDoctors } from '../store/doctorSlice';
@@ -8,11 +9,19 @@ const Appointment = () => {
   const doctors = useSelector((state) => state.doctor.doctors);
   const dispatch = useDispatch();
   const { id } = useParams();
+  const [doctorName, setDoctorName] = useState('');
 
   useEffect(() => {
     dispatch(getDoctors());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const doc = doctors.filter((d) => d.id === parseFloat(id, 10));
+
+    if (doc[0] !== undefined) {
+      setDoctorName(doc[0].name);
+    }
+  }, [doctors, id]);
 
   const newAppointment = (e) => {
     e.preventDefault();
@@ -39,12 +48,12 @@ const Appointment = () => {
           <div className="w-full relative flex flex-col md:flex-row justify-around items-center">
             <label htmlFor="doctor" className="flex flex-col w-11/12 md:w-1/6">
               Select a Doctor:
-              <select className="text-left px-2 bg-ligthgray py-2.5 border border-citrus-600 rounded-lg" name="doctor" id="doctor">
+              <select value={doctorName} onChange={(e) => setDoctorName(e.target.value)} className="text-left px-2 bg-ligthgray py-2.5 border border-citrus-600 rounded-lg" name="doctor" id="doctor">
                 {
                   doctors.map((doctor) => (
                     <option
-                      selected={doctor.id === parseInt(id, 10) || undefined}
                       key={doctor.id}
+                      placeholder={id}
                       className="hover:citrus:500 hover:color:gray-100"
                     >
                       {doctor.name}
