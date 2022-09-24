@@ -7,7 +7,7 @@ import { createAppointment } from '../store/appointmentSlice';
 const Appointment = () => {
   const doctors = useSelector((state) => state.doctor.doctors);
   const dispatch = useDispatch();
-  const id = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(getDoctors());
@@ -43,7 +43,7 @@ const Appointment = () => {
                 {
                   doctors.map((doctor) => (
                     <option
-                      placeholder={id}
+                      selected={doctor.id === parseInt(id, 10) || undefined}
                       key={doctor.id}
                       className="hover:citrus:500 hover:color:gray-100"
                     >
