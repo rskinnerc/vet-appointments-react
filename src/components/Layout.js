@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
 import NavMenu from './NavMenu';
 import AuthPopUp from './AuthPopUp';
+import MobileMenu from './MobileMenu';
 
 const Layout = () => {
   const location = useLocation();
@@ -10,7 +11,10 @@ const Layout = () => {
   return (
     <main className="min-h-screen flex">
       {location.pathname !== '/' && (
-        <NavMenu />
+        <>
+          <NavMenu />
+          <MobileMenu />
+        </>
       )}
       <Outlet />
       {authPopupOpen && <AuthPopUp />}
