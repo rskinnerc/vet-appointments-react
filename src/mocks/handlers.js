@@ -35,7 +35,7 @@ const handlers = [
       {
         id: 1,
         doctor_id: 1,
-        user_id: 1,
+        user_id: 2,
         city: 'California',
         date: 50,
       },
