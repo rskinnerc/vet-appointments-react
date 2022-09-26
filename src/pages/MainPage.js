@@ -25,7 +25,7 @@ const MainPage = () => {
         >
           {
             doctors.map((doctor) => (
-              <div className="flex justify-center inline-block p-2" key={doctor.id}>
+              <div className="flex justify-center p-2" key={doctor.id}>
                 <div className="max-w-sm hover:scale-105 ease-in-out duration-300 flex flex-col items-center">
                   <Link to={`/doctors/${doctor.id}`}>
                     <img className="rounded-full w-60 h-60 max-w-fit" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="Avatar" />
