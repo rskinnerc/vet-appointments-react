@@ -51,6 +51,7 @@
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "4.x",
+    "msw": "^0.47.3",
     "postcss": "^8.4.16",
     "stylelint": "13.x",
     "stylelint-config-standard": "21.x",
