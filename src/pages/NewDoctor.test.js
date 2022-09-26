@@ -3,6 +3,7 @@ import {
 } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
 import store from '../store/store';
 import App from '../App';
@@ -54,20 +55,28 @@ describe('the add new doctor page', () => {
         </Provider>,
       );
 
-      user.type(await screen.findByPlaceholderText('Name', { exact: false }), 'Test Doctor');
-      user.type(await screen.findByPlaceholderText('Specialization', { exact: false }), 'Test Specialization');
-      user.type(await screen.findByPlaceholderText('Years of experience', { exact: false }), '10');
-      user.type(await screen.findByPlaceholderText('Price', { exact: false }), '100');
-      user.type(await screen.findByPlaceholderText('Description', { exact: false }), 'Test Long Description');
-      user.upload(await screen.findByLabelText('Doctor Photo', { exact: false }), new File(['(⌐□_□)'], 'testdoctor.png', { type: 'image/png' }));
-      user.click(await screen.findByText('Add Doctor', { exact: false }));
+      act(() => {
+        user.type(screen.queryByPlaceholderText('Name', { exact: false }), 'Test Doctor');
 
-      expect(await screen.findByText('Test Doctor')).toBeInTheDocument();
-      expect(await screen.findByText('Test Specialization')).toBeInTheDocument();
-      expect(await screen.findByText('10')).toBeInTheDocument();
-      expect(await screen.findByText('100')).toBeInTheDocument();
-      expect(await screen.findByText('Test Long Description')).toBeInTheDocument();
-      expect(await screen.findByAltText('Test Doctor')).toBeInTheDocument();
+        user.type(screen.queryByPlaceholderText('Specialization', { exact: false }), 'Test Specialization');
+
+        user.type(screen.queryByPlaceholderText('Years of experience', { exact: false }), '10');
+
+        user.type(screen.queryByPlaceholderText('Price', { exact: false }), '100');
+
+        user.type(screen.queryByPlaceholderText('Description', { exact: false }), 'Test Long Description');
+
+        user.upload(screen.queryByLabelText('Doctor Photo', { exact: false }), new File(['(⌐□_□)'], 'testdoctor.png', { type: 'image/png' }));
+
+        user.click(screen.queryByText('Add Doctor', { exact: false }));
+      });
+
+      expect(screen.findByText('Test Doctor')).not.toBeNull();
+      expect(screen.findByText('Test Specialization')).not.toBeNull();
+      expect(screen.findByText('10')).not.toBeNull();
+      expect(screen.findByText('100')).not.toBeNull();
+      expect(screen.findByText('Test Long Description')).not.toBeNull();
+      expect(screen.findByAltText('Test Doctor')).not.toBeNull();
     });
   });
 });

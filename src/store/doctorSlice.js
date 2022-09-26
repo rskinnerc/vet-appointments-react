@@ -15,6 +15,21 @@ export const getDoctors = createAsyncThunk(
   },
 );
 
+export const addDoctor = createAsyncThunk(
+  'doctors/addDoctor',
+  async (formdata) => {
+    const response = await fetch(`${process.env.REACT_APP_API_HOST}/doctors/create`, {
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formdata,
+      method: 'POST',
+    });
+    const data = await response.text();
+    return data;
+  },
+);
+
 export const doctorSlice = createSlice({
   name: 'doctor',
   initialState,
@@ -28,6 +43,15 @@ export const doctorSlice = createSlice({
     [getDoctors.fulfilled]: (state, action) => {
       state.status = 'Success';
       state.doctors = action.payload;
+    },
+    [addDoctor.pending]: (state) => {
+      state.status = 'Loading';
+    },
+    [addDoctor.rejected]: (state) => {
+      state.status = 'error: "Failed to add doctor"';
+    },
+    [addDoctor.fulfilled]: (state, action) => {
+      state.status = action.payload;
     },
   },
 });

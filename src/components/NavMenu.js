@@ -7,7 +7,7 @@ const NavMenu = () => (
       <Link className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2" href="/doctors">VETS</Link>
       <Link className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2" href="/">MAKE AN APPOINTMENT</Link>
       <Link className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2" href="/">MY APPOINTMENTS</Link>
-      <Link className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2" href="/">ADD VET</Link>
+      <Link className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2" to="/doctors/new">ADD VET</Link>
       <Link className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2" href="/">DELETE VET</Link>
     </nav>
   </header>

@@ -34,6 +34,10 @@ const handlers = [
       },
     ]),
   )),
+
+  rest.post(`${process.env.REACT_APP_API_HOST}/doctors/create`, async (req, res, ctx) => res(
+    ctx.json('Successfully created'),
+  )),
 ];
 
 export default handlers;
