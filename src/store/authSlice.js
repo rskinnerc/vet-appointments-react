@@ -38,6 +38,9 @@ export const authSlice = createSlice({
     toggleAuthPopup: (state) => {
       state.authPopupOpen = !state.authPopupOpen;
     },
+    enableAuthPopup: (state) => {
+      state.authPopupOpen = true;
+    },
     signOut: (state) => {
       state.user = null;
     },
@@ -51,5 +54,7 @@ export const authSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser, toggleAuthPopup, signOut } = authSlice.actions;
+export const {
+  setUser, toggleAuthPopup, enableAuthPopup, signOut,
+} = authSlice.actions;
 export default authSlice.reducer;
