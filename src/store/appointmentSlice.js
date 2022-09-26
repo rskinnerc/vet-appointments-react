@@ -8,8 +8,8 @@ const initialState = {
 
 export const getAppointments = createAsyncThunk(
   'appointments/getAppointments',
-  async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_HOST}/users/2/appointments`);
+  async (userId) => {
+    const response = await fetch(`${process.env.REACT_APP_API_HOST}/users/${userId}/appointments`);
     const data = await response.json();
     return data;
   },

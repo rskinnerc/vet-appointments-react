@@ -6,16 +6,20 @@ import { enableAuthPopup } from '../store/authSlice';
 
 const AppointmentList = () => {
   const doctors = useSelector((state) => state.doctor.doctors);
+  const user = useSelector((state) => state.auth.user);
   const appointments = useSelector((state) => state.appointment.appointments);
   const dispatch = useDispatch();
-  const user = 'undefined';
 
   useEffect(() => {
     dispatch(getDoctors());
-    dispatch(getAppointments());
+    dispatch(getAppointments(user.id));
 
     if (!user) {
       dispatch(enableAuthPopup());
+
+      if (!user) {
+        dispatch(enableAuthPopup());
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -34,7 +38,7 @@ const AppointmentList = () => {
                       <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
                         Name:
                         {' '}
-                        {doctors[apntmnt.doctor_id] ? doctors[apntmnt.doctor_id].name : ''}
+                        {doctors[apntmnt.doctor_id - 1] ? doctors[apntmnt.doctor_id - 1].name : ''}
                       </span>
                       <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
                         City:
