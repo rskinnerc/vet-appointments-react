@@ -13,6 +13,7 @@ const Appointment = () => {
 
   useEffect(() => {
     dispatch(getDoctors());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
