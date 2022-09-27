@@ -15,20 +15,43 @@ export const getDoctors = createAsyncThunk(
   },
 );
 
+export const addDoctor = createAsyncThunk(
+  'doctors/addDoctor',
+  async (formdata) => {
+    const response = await fetch(`${process.env.REACT_APP_API_HOST}/doctors/create`, {
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formdata,
+      method: 'POST',
+    });
+    return response.status === 200 ? response.text() : response.json();
+  },
+);
+
 export const doctorSlice = createSlice({
   name: 'doctor',
   initialState,
-  extraReducers: {
-    [getDoctors.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(getDoctors.pending, (state) => {
       state.status = 'Loading';
-    },
-    [getDoctors.rejected]: (state) => {
+    });
+    builder.addCase(getDoctors.rejected, (state) => {
       state.status = 'error: "Failed to retrieve doctors"';
-    },
-    [getDoctors.fulfilled]: (state, action) => {
+    });
+    builder.addCase(getDoctors.fulfilled, (state, action) => {
       state.status = 'Success';
       state.doctors = action.payload;
-    },
+    });
+    builder.addCase(addDoctor.pending, (state) => {
+      state.status = 'Loading';
+    });
+    builder.addCase(addDoctor.rejected, (state) => {
+      state.status = 'error: "Failed to add doctor"';
+    });
+    builder.addCase(addDoctor.fulfilled, (state, action) => {
+      state.status = action.payload;
+    });
   },
 });
 
