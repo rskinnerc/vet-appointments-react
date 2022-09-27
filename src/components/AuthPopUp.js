@@ -23,7 +23,6 @@ const AuthPopUp = () => {
             type="text"
             name="name"
             id="name"
-            className="border bg-stone-200 h-12 rounded-lg text-stone-800 px-2 placeholder:text-stone-500 focus:outline-amber-500"
             placeholder="Username"
           />
           <button type="submit" data-testid="sign-in-button" className="bg-amber-500 my-4 h-10 w-2/5 self-center rounded-md text-white font-semibold flex items-center justify-center gap-2">
