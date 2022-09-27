@@ -4,6 +4,8 @@ import Landing from './pages/Landing';
 import MainPage from './pages/MainPage';
 import NewDoctor from './pages/NewDoctor';
 import Doctor from './pages/Doctor';
+import Appointment from './pages/Appointment';
+import AppointmentList from './pages/AppointmentList';
 
 function App() {
   return (
@@ -13,6 +15,9 @@ function App() {
         <Route path="/doctors" element={<MainPage />} />
         <Route path="/doctors/new" element={<NewDoctor />} />
         <Route path="/doctors/:id" element={<Doctor />} />
+        <Route path="/new-appointment" element={<Appointment />} />
+        <Route path="/new-appointment/:id" element={<Appointment />} />
+        <Route path="/appointments" element={<AppointmentList />} />
       </Route>
     </Routes>
   );
