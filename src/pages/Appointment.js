@@ -15,27 +15,39 @@ const Appointment = () => {
   const [doctorName, setDoctorName] = useState('');
 
   useEffect(() => {
-    dispatch(getDoctors());
-
     if (!user) {
       dispatch(enableAuthPopup());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    if (doctors.length === 0) {
+      dispatch(getDoctors());
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const doc = doctors.filter((d) => d.id === parseFloat(id, 10));
+    if (id) {
+      const doc = doctors.filter((d) => d.id === parseFloat(id, 10));
 
-    if (doc[0] !== undefined) {
-      setDoctorName(doc[0].name);
+      if (doc[0] !== undefined) {
+        setDoctorName(doc[0].name);
+      }
     }
   }, [doctors, id]);
+
+  const getMinDate = () => {
+    const currentDate = new Date().toISOString();
+    const today = currentDate.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}/);
+    return today;
+  };
 
   const newAppointment = (e) => {
     e.preventDefault();
     const doctorName = document.getElementById('doctor').value;
     const doctorId = doctors.find((doctor) => doctor.name === doctorName).id;
-    const date = document.getElementById('datetime').valueAsDate.toISOString();
+    const date = new Date(document.getElementById('datetime').value).toISOString();
     const city = document.getElementById('city').value;
 
     const appointment = {
@@ -80,7 +92,14 @@ const Appointment = () => {
                   </label>
                   <label htmlFor="date" className="flex flex-col w-11/12 md:w-min">
                     Select a Date:
-                    <input required data-testid="date" type="datetime-local" id="datetime" className="bg-gray-100 p-2 border border-citrus-500 focus:outline-none focus:border-2 focus:border-citrus-600 rounded-lg" />
+                    <input
+                      required
+                      min={getMinDate()}
+                      data-testid="date"
+                      type="datetime-local"
+                      id="datetime"
+                      className="bg-gray-100 p-2 border border-citrus-500 focus:outline-none focus:border-2 focus:border-citrus-600 rounded-lg"
+                    />
                   </label>
                 </div>
                 <input type="submit" data-testid="submit" value="Submit" className="mt-20 w-1/2 md:w-1/5 inline-block py-4 bg-citrus-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-citrus-700 hover:shadow-lg focus:bg-citrus-700 transition duration-150 ease-in-out" />
