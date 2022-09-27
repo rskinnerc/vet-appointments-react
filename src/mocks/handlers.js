@@ -30,6 +30,10 @@ const handlers = [
     ]),
   )),
 
+  rest.post(`${process.env.REACT_APP_API_HOST}/doctors/create`, async (req, res, ctx) => res(
+    ctx.json('Successfully created'),
+  )),
+
   rest.get(`${process.env.REACT_APP_API_HOST}/users/2/appointments`, (req, res, ctx) => res(
     ctx.json([
       {
@@ -49,7 +53,6 @@ const handlers = [
       },
     ]),
   )),
-
 ];
 
 export default handlers;
