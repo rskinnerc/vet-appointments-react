@@ -12,24 +12,30 @@ const AppointmentList = () => {
 
   useEffect(() => {
     dispatch(getDoctors());
-    dispatch(getAppointments(user.id));
-
-    if (!user) {
-      dispatch(enableAuthPopup());
-
-      if (!user) {
-        dispatch(enableAuthPopup());
-      }
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!user) {
+      dispatch(enableAuthPopup());
+    } else {
+      dispatch(getAppointments(user.id));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
+
+  const padWithZero = (number) => (
+    number >= 10
+      ? number
+      : `0${number}`
+  );
 
   return (
     <section className="flex flex-col items-center w-full lg:w-10/12 pb-20">
       {
         user && (
           <>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-center mt-16 lg:self-end lg:mr-24 lg:mt-36">MY APPOINTMENTS</h1>
+            <h1 title="appointments" className="text-3xl md:text-5xl lg:text-6xl font-bold text-center mt-16 lg:self-end lg:mr-24 lg:mt-36">MY APPOINTMENTS</h1>
             <div className="w-full mt-14 md:mt-24">
               <div className="w-full flex flex-col space-y-6 items-center mt-3">
                 {appointments.map((apntmnt) => (
@@ -50,18 +56,18 @@ const AppointmentList = () => {
                       <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
                         Date:
                         {' '}
-                        {new Date(apntmnt.date).getUTCDate()}
+                        {padWithZero(new Date(apntmnt.date).getUTCDate())}
                         -
-                        {new Date(apntmnt.date).getUTCMonth()}
+                        {padWithZero((new Date(apntmnt.date).getUTCMonth()) + 1)}
                         -
                         {new Date(apntmnt.date).getUTCFullYear()}
                       </span>
                       <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
                         Time:
                         {' '}
-                        {new Date(apntmnt.date).getUTCHours()}
+                        {padWithZero(new Date(apntmnt.date).getUTCHours())}
                         :
-                        {new Date(apntmnt.date).getUTCMinutes()}
+                        {padWithZero(new Date(apntmnt.date).getUTCMinutes())}
                       </span>
                     </div>
                   </div>

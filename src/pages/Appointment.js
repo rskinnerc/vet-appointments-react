@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getDoctors } from '../store/doctorSlice';
-import { createAppointment } from '../store/appointmentSlice';
+import { createAppointment, getAppointments } from '../store/appointmentSlice';
 import { enableAuthPopup } from '../store/authSlice';
 
 const Appointment = () => {
@@ -46,6 +46,7 @@ const Appointment = () => {
     };
 
     dispatch(createAppointment(appointment));
+    dispatch(getAppointments(user.id));
     navigate('/appointments');
   };
 
