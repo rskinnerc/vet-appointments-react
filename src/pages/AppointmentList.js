@@ -22,7 +22,7 @@ const AppointmentList = () => {
       dispatch(getAppointments(user.id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [user, appointments]);
 
   const padWithZero = (number) => (
     number >= 10
