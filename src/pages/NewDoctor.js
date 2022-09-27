@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toggleAuthPopup } from '../store/authSlice';
 import { addDoctor } from '../store/doctorSlice';
 
 const NewDoctor = () => {
@@ -37,7 +38,12 @@ const NewDoctor = () => {
   };
 
   if (!user) {
-    return <p>You are not authorized to perform this actions. Please Sign in.</p>;
+    return (
+      <section className="w-full">
+        <p className="text-l font-semibold italic text-center my-24">You are not authorized to perform this actions. Please Sign in.</p>
+        <button type="button" onClick={() => dispatch(toggleAuthPopup())} className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-md text-white font-semibold flex items-center justify-center gap-2">Sign In</button>
+      </section>
+    );
   }
 
   return (
