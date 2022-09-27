@@ -25,34 +25,33 @@ export const addDoctor = createAsyncThunk(
       body: formdata,
       method: 'POST',
     });
-    const data = await response.text();
-    return data;
+    return response.status === 200 ? response.text() : response.json();
   },
 );
 
 export const doctorSlice = createSlice({
   name: 'doctor',
   initialState,
-  extraReducers: {
-    [getDoctors.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(getDoctors.pending, (state) => {
       state.status = 'Loading';
-    },
-    [getDoctors.rejected]: (state) => {
+    });
+    builder.addCase(getDoctors.rejected, (state) => {
       state.status = 'error: "Failed to retrieve doctors"';
-    },
-    [getDoctors.fulfilled]: (state, action) => {
+    });
+    builder.addCase(getDoctors.fulfilled, (state, action) => {
       state.status = 'Success';
       state.doctors = action.payload;
-    },
-    [addDoctor.pending]: (state) => {
+    });
+    builder.addCase(addDoctor.pending, (state) => {
       state.status = 'Loading';
-    },
-    [addDoctor.rejected]: (state) => {
+    });
+    builder.addCase(addDoctor.rejected, (state) => {
       state.status = 'error: "Failed to add doctor"';
-    },
-    [addDoctor.fulfilled]: (state, action) => {
+    });
+    builder.addCase(addDoctor.fulfilled, (state, action) => {
       state.status = action.payload;
-    },
+    });
   },
 });
 

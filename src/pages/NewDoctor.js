@@ -61,6 +61,18 @@ const NewDoctor = () => {
           <input type="file" id="doctor-photo" name="doctor-photo" onChange={(e) => setPhoto(e.target.files[0])} />
         </label>
         <button type="submit" className="mx-auto h-12 flex justify-between items-center bg-citrus-500 hover:bg-citrus-600 hover:shadow-md text-white px-6 shadow-lg text-center rounded-full font-semibold">Add Doctor</button>
+        {(Array.isArray(addDoctorStatus)) && (
+          <div>
+            <h4>
+              There are some errors with your submission. Please check the form and try again.
+            </h4>
+            <p className="text-red-600">
+              -
+              {' '}
+              {addDoctorStatus[0]}
+            </p>
+          </div>
+        )}
       </form>
     </section>
   );
