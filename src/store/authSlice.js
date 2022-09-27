@@ -15,7 +15,7 @@ export const signInUser = createAsyncThunk(
       },
     };
 
-    const response = await fetch('http://localhost:3000/users/create', {
+    const response = await fetch(`${process.env.REACT_APP_API_HOST}/users/create`, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -38,6 +38,9 @@ export const authSlice = createSlice({
     toggleAuthPopup: (state) => {
       state.authPopupOpen = !state.authPopupOpen;
     },
+    enableAuthPopup: (state) => {
+      state.authPopupOpen = true;
+    },
     signOut: (state) => {
       state.user = null;
     },
@@ -51,5 +54,7 @@ export const authSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser, toggleAuthPopup, signOut } = authSlice.actions;
+export const {
+  setUser, toggleAuthPopup, enableAuthPopup, signOut,
+} = authSlice.actions;
 export default authSlice.reducer;

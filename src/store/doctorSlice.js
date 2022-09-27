@@ -9,7 +9,7 @@ const initialState = {
 export const getDoctors = createAsyncThunk(
   'doctors/getDoctors',
   async () => {
-    const response = await fetch('http://localhost:4000/doctors/index');
+    const response = await fetch(`${process.env.REACT_APP_API_HOST}/doctors/index`);
     const data = await response.json();
     return data;
   },
@@ -27,7 +27,7 @@ export const doctorSlice = createSlice({
     },
     [getDoctors.fulfilled]: (state, action) => {
       state.status = 'Success';
-      state.doctors = [...action.payload];
+      state.doctors = action.payload;
     },
   },
 });

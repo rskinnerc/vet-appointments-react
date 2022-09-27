@@ -13,8 +13,8 @@ const MainPage = () => {
   }, []);
 
   return (
-    <section className="flex flex-col items-center w-full md:w-10/12 pb-20">
-      <div className="text-center mt-16 md:self-end md:mr-24 md:mt-36">
+    <section className="flex flex-col items-center w-full lg:w-10/12 pb-20">
+      <div className="text-center mt-16 lg:self-end lg:mr-24 lg:mt-36">
         <h1 className="text-5xl md:text-6xl font-bold">LATEST VETS</h1>
         <span className="mt-2 text-xl text-gray-400">Please select a vet</span>
       </div>
@@ -25,7 +25,7 @@ const MainPage = () => {
         >
           {
             doctors.map((doctor) => (
-              <div className="flex justify-center inline-block p-2" key={doctor.id}>
+              <div className="flex justify-center p-2" key={doctor.id}>
                 <div className="max-w-sm hover:scale-105 ease-in-out duration-300 flex flex-col items-center">
                   <Link to={`/doctors/${doctor.id}`}>
                     <img className="rounded-full w-60 h-60 max-w-fit" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="Avatar" />

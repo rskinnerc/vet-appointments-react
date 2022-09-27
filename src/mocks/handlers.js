@@ -3,7 +3,7 @@ import { rest } from 'msw';
 
 const handlers = [
   // Handles a POST /login request
-  rest.post('http://localhost:3000/users/create', (req, res, ctx) => res(
+  rest.post(`${process.env.REACT_APP_API_HOST}/users/create`, (req, res, ctx) => res(
     ctx.json({
       id: 2, name: 'test', created_at: '2022-09-15T15:53:34.780Z', updated_at: '2022-09-15T15:53:34.780Z',
     }),
@@ -30,14 +30,14 @@ const handlers = [
     ]),
   )),
 
-  rest.get(`${process.env.REACT_APP_API_HOST}/appointments/create`, (req, res, ctx) => res(
+  rest.get(`${process.env.REACT_APP_API_HOST}/users/2/appointments`, (req, res, ctx) => res(
     ctx.json([
       {
         id: 1,
         doctor_id: 1,
         user_id: 2,
-        city: 'California',
-        date: 50,
+        city: 'Minsk',
+        date: '2022-03-25T08:00:00Z',
       },
 
       {
@@ -45,7 +45,7 @@ const handlers = [
         doctor_id: 2,
         user_id: 2,
         city: 'Prague',
-        date: 50,
+        date: '2022-08-16T14:00:00Z',
       },
     ]),
   )),
