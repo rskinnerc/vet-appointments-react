@@ -15,7 +15,7 @@ const NavMenu = () => {
         <NavLink className={activeLink} to="/new-appointment">MAKE AN APPOINTMENT</NavLink>
         <NavLink className={activeLink} to="/appointments">MY APPOINTMENTS</NavLink>
         <NavLink className={activeLink} to="/doctors/new">ADD VET</NavLink>
-        <NavLink className={activeLink} to="/delete-vet">DELETE VET</NavLink>
+        <NavLink className={activeLink} to="/doctors/delete">DELETE VET</NavLink>
       </nav>
     </header>
   );

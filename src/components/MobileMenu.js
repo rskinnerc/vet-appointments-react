@@ -24,7 +24,7 @@ const MobileMenu = () => {
         <NavLink onClick={() => toggleCollapse()} className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2 block" to="/new-appointment">MAKE AN APPOINTMENT</NavLink>
         <NavLink onClick={() => toggleCollapse()} className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2 block" to="/appointments">MY APPOINTMENTS</NavLink>
         <NavLink onClick={() => toggleCollapse()} className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2 block" to="/doctors/new">ADD VET</NavLink>
-        <NavLink onClick={() => toggleCollapse()} className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2 block rounded-bl" to="/">DELETE VET</NavLink>
+        <NavLink onClick={() => toggleCollapse()} className="font-bold text-gray-800 hover:bg-citrus-500 hover:text-white text-lg pl-2 tracking-tighter py-2 block rounded-bl" to="/doctors/delete">DELETE VET</NavLink>
       </nav>
     </header>
   );
