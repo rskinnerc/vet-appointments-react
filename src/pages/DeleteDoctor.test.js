@@ -3,7 +3,6 @@ import {
 } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
 import store from '../store/store';
 import App from '../App';
@@ -56,8 +55,8 @@ describe('the delete doctors page', () => {
       const doctor2 = await screen.findByTestId('doctor-2');
 
       act(() => {
-        userEvent.click(doctor1);
-        userEvent.click(doctor2);
+        doctor1.click();
+        doctor2.click();
       });
 
       expect(await screen.findByText('Delete a Doctor')).toBeInTheDocument();

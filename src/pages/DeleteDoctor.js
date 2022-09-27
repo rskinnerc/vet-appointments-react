@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoTrash } from 'react-icons/io5';
-import { getDoctors } from '../store/doctorSlice';
+import { getDoctors, deleteDoctor } from '../store/doctorSlice';
 import { toggleAuthPopup } from '../store/authSlice';
 
 const DeleteDoctor = () => {
@@ -13,7 +13,7 @@ const DeleteDoctor = () => {
     if (doctors.length === 0) {
       dispatch(getDoctors());
     }
-  });
+  }, [dispatch, doctors]);
 
   if (!user) {
     return (
@@ -35,7 +35,8 @@ const DeleteDoctor = () => {
           {doctors.map((doctor) => (
             <li key={doctor.id}>
               <span>{doctor.name}</span>
-              <IoTrash data-testid={`doctor-${doctor.id}`} />
+              {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+              <button type="button" data-testid={`doctor-${doctor.id}`} onClick={() => dispatch(deleteDoctor(doctor.id))}><IoTrash /></button>
             </li>
           ))}
         </ul>
