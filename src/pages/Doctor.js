@@ -61,7 +61,7 @@ const Doctor = () => {
           {' '}
           <IoChevronForward className="text-citrus-500 font-bold" />
         </Link>
-        <Link to={`/doctors/${params.id}/appointments/new`} className="mx-auto h-12 flex justify-between items-center bg-citrus-500 hover:bg-citrus-600 hover:shadow-md text-white px-6 w-5/6 sm:w-1/2 md:w-full lg:w-9/12 xl: self-center shadow-lg text-center rounded-full font-semibold">
+        <Link to={`/new-appointment/${doctor.id}`} className="mx-auto h-12 flex justify-between items-center bg-citrus-500 hover:bg-citrus-600 hover:shadow-md text-white px-6 w-5/6 sm:w-1/2 md:w-full lg:w-9/12 xl: self-center shadow-lg text-center rounded-full font-semibold">
           <IoCalendarNumberOutline className="font-semibold text-2xl" />
           Reserve Appointment
           <IoChevronForward className="text-2xl" />
