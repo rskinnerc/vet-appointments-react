@@ -29,6 +29,21 @@ export const addDoctor = createAsyncThunk(
   },
 );
 
+export const deleteDoctor = createAsyncThunk(
+  'doctors/deleteDoctor',
+  async (id) => {
+    const response = await fetch(`${process.env.REACT_APP_API_HOST}/doctors/delete`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({ id }),
+    });
+    return response.text();
+  },
+);
+
 export const doctorSlice = createSlice({
   name: 'doctor',
   initialState,
@@ -51,6 +66,16 @@ export const doctorSlice = createSlice({
     });
     builder.addCase(addDoctor.fulfilled, (state, action) => {
       state.status = action.payload;
+    });
+    builder.addCase(deleteDoctor.pending, (state) => {
+      state.status = 'Loading';
+    });
+    builder.addCase(deleteDoctor.rejected, (state) => {
+      state.status = 'error: "Failed to delete doctor"';
+    });
+    builder.addCase(deleteDoctor.fulfilled, (state, action) => {
+      state.status = action.payload;
+      state.doctors = state.doctors.filter((doctor) => doctor.id !== action.meta.arg);
     });
   },
 });
