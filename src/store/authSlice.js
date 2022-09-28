@@ -24,6 +24,7 @@ export const signInUser = createAsyncThunk(
       method: 'POST',
     });
     const data = await response.json();
+    localStorage.setItem('user', JSON.stringify(data));
     return data;
   },
 );
@@ -42,6 +43,7 @@ export const authSlice = createSlice({
       state.authPopupOpen = true;
     },
     signOut: (state) => {
+      localStorage.removeItem('user');
       state.user = null;
     },
   },
