@@ -36,7 +36,7 @@ const MainPage = () => {
                       </p>
                     </div>
                   </Link>
-                  <Link to={`/new-appointment/${doctor.id}`} className="inline-block px-6 py-2 bg-citrus-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-citrus-700 hover:shadow-lg focus:bg-citrus-700 transition duration-150 ease-in-out mt-auto">
+                  <Link to={`/new-appointment/${doctor.id}`} className="mx-auto h-12 flex justify-between items-center bg-citrus-500 hover:bg-citrus-600 hover:shadow-md text-white px-6 shadow-lg text-center rounded-full font-semibold">
                     Make an Appointment
                   </Link>
                 </div>

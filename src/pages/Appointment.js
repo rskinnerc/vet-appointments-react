@@ -96,7 +96,7 @@ const Appointment = () => {
                     />
                   </label>
                 </div>
-                <input type="submit" data-testid="submit" value="Submit" className="mt-20 w-1/2 md:w-1/5 inline-block py-4 bg-citrus-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-citrus-700 hover:shadow-lg focus:bg-citrus-700 transition duration-150 ease-in-out" />
+                <button type="submit" data-testid="submit" className="mt-20 w-1/2 text-center md:w-1/5 mx-auto h-12 bg-citrus-500 hover:bg-citrus-600 hover:shadow-md text-white px-6 shadow-lg rounded-full font-semibold focus:bg-citrus-700 transition duration-150 ease-in-out">Add Appointment</button>
               </form>
             </div>
           </>

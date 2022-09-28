@@ -33,7 +33,7 @@ const DeleteDoctor = () => {
       {doctors.length > 0 && (
         <ul className="flex flex-col gap-5 px-1 md:w-4/6 lg:w-1/2 2xl:w-1/3 mx-auto">
           {doctors.map((doctor) => (
-            <li key={doctor.id} className="shadow rounded-md shadow-amber-500/40 p-3 flex justify-between">
+            <li key={doctor.id} className="border-2 border-l-8 border-l-citrus-500 rounded-lg hover:border-l-citrus-500 hover:border-citrus-400 border-gray p-5 text-xl flex justify-between hover:scale-[1.01] transition-transform hover:shadow-xl shadow-stone-100">
               <div>
                 <span className="block font-semibold">{doctor.name}</span>
                 <span className="block italic text-sm text-stone-500">{doctor.specialization}</span>
