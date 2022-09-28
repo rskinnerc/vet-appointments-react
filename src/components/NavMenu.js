@@ -22,7 +22,7 @@ const NavMenu = () => {
         <NavLink className={activeLink} to="/doctors/delete">DELETE VET</NavLink>
       </nav>
       {user && (
-        <button type="button" className="bg-red-500 rounded-md self-center p-2 text-white font-semibold mt-32" onClick={() => dispatch(signOut())}>
+        <button type="button" className="bg-red-500 rounded-full px-12 self-center py-2 text-white font-semibold mt-32" onClick={() => dispatch(signOut())}>
           Sign Out
         </button>
       )}

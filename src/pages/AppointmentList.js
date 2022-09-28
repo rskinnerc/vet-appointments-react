@@ -79,7 +79,7 @@ const AppointmentList = () => {
         !user && (
           <div className="my-auto text-xl">
             <h1>You must be signed in to access your appointments</h1>
-            <button type="button" onClick={() => dispatch(toggleAuthPopup())} className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-md text-white font-semibold flex items-center justify-center gap-2">Sign In</button>
+            <button type="button" onClick={() => dispatch(toggleAuthPopup())} className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-full text-white font-semibold flex items-center justify-center gap-2">Sign In</button>
 
           </div>
         )
