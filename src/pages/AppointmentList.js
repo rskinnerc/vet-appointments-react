@@ -34,43 +34,41 @@ const AppointmentList = () => {
         user && (
           <>
             <h1 title="appointments" className="text-3xl md:text-5xl lg:text-6xl font-bold text-center mt-16 lg:self-end lg:mr-24 lg:mt-36">MY APPOINTMENTS</h1>
-            <div className="w-full mt-14 md:mt-24">
-              <div className="w-full flex flex-col space-y-6 items-center mt-3">
-                {appointments.map((apntmnt) => (
-                  <div className="md:space-y-4 border-2 border-l-8 border-l-citrus-500 rounded-lg hover:border-l-citrus-500 hover:border-citrus-400 border-gray w-8/12 px-5 py-5 text-xl flex flex-col md:px-0 justify-around p3 hover:scale-[1.01] transition-transform hover:shadow-xl shadow-stone-100" key={apntmnt.id}>
-                    <div className="flex flex-col md:flex-row">
-                      <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
-                        Name:
-                        {' '}
-                        {doctors.find((doctor) => doctor.id === apntmnt.doctor_id).name}
-                      </span>
-                      <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
-                        City:
-                        {' '}
-                        {apntmnt.city}
-                      </span>
-                    </div>
-                    <div className="flex flex-col md:flex-row">
-                      <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
-                        Date:
-                        {' '}
-                        {padWithZero(new Date(apntmnt.date).getUTCDate())}
-                        -
-                        {padWithZero((new Date(apntmnt.date).getUTCMonth()) + 1)}
-                        -
-                        {new Date(apntmnt.date).getUTCFullYear()}
-                      </span>
-                      <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
-                        Time:
-                        {' '}
-                        {padWithZero(new Date(apntmnt.date).getUTCHours())}
-                        :
-                        {padWithZero(new Date(apntmnt.date).getUTCMinutes())}
-                      </span>
-                    </div>
+            <div className="w-full flex flex-col mt-16 md:mt-24 space-y-6 px-1 md:items-center">
+              {appointments.map((apntmnt) => (
+                <div className="md:space-y-4 border-2 border-l-8 border-l-citrus-500 rounded-lg hover:border-l-citrus-500 hover:border-citrus-400 border-gray md:w-8/12 px-5 py-5 text-xl flex flex-col md:px-0 justify-around p3 hover:scale-[1.01] transition-transform hover:shadow-xl shadow-stone-100" key={apntmnt.id}>
+                  <div className="flex flex-col md:flex-row">
+                    <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
+                      Name:
+                      {' '}
+                      {doctors.find((doctor) => doctor.id === apntmnt.doctor_id).name}
+                    </span>
+                    <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
+                      City:
+                      {' '}
+                      {apntmnt.city}
+                    </span>
                   </div>
-                ))}
-              </div>
+                  <div className="flex flex-col md:flex-row">
+                    <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
+                      Date:
+                      {' '}
+                      {padWithZero(new Date(apntmnt.date).getUTCDate())}
+                      -
+                      {padWithZero((new Date(apntmnt.date).getUTCMonth()) + 1)}
+                      -
+                      {new Date(apntmnt.date).getUTCFullYear()}
+                    </span>
+                    <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
+                      Time:
+                      {' '}
+                      {padWithZero(new Date(apntmnt.date).getUTCHours())}
+                      :
+                      {padWithZero(new Date(apntmnt.date).getUTCMinutes())}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </>
         )
