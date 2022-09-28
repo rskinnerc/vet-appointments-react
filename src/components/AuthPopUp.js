@@ -25,7 +25,7 @@ const AuthPopUp = () => {
             id="name"
             placeholder="Username"
           />
-          <button type="submit" data-testid="sign-in-button" className="bg-amber-500 my-4 h-10 w-2/5 self-center rounded-md text-white font-semibold flex items-center justify-center gap-2">
+          <button type="submit" data-testid="sign-in-button" className="bg-amber-500 my-4 h-10 w-2/5 self-center rounded-full text-white font-semibold flex items-center justify-center gap-2">
             <IoLockClosed className="text-2xl font-semibold" />
             Sign In
           </button>

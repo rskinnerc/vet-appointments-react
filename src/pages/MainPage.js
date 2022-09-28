@@ -28,7 +28,7 @@ const MainPage = () => {
               <div className="flex justify-center p-2" key={doctor.id}>
                 <div className="max-w-sm hover:scale-105 ease-in-out duration-300 flex flex-col items-center">
                   <Link to={`/doctors/${doctor.id}`}>
-                    <img className="rounded-full w-60 h-60 max-w-fit" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="Avatar" />
+                    <img className="rounded-full w-60 h-60 max-w-fit" src={doctor.photo_path || `https://via.placeholder.com/480x480?text=${doctor.name}`} alt={doctor.name} />
                     <div className="p-6 mt-2 text-center">
                       <h5 className="text-gray-900 text-2xl font-medium mb-5">{doctor.name}</h5>
                       <p title="description" className="text-gray-700 text-sm mb-2 whitespace-normal">
@@ -36,7 +36,7 @@ const MainPage = () => {
                       </p>
                     </div>
                   </Link>
-                  <Link to={`/new-appointment/${doctor.id}`} className="inline-block px-6 py-2 bg-citrus-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-citrus-700 hover:shadow-lg focus:bg-citrus-700 transition duration-150 ease-in-out mt-auto">
+                  <Link to={`/new-appointment/${doctor.id}`} className="mx-auto h-12 flex justify-between items-center bg-citrus-500 hover:bg-citrus-600 hover:shadow-md text-white px-6 shadow-lg text-center rounded-full font-semibold">
                     Make an Appointment
                   </Link>
                 </div>

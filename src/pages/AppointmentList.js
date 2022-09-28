@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAppointments } from '../store/appointmentSlice';
 import { getDoctors } from '../store/doctorSlice';
-import { enableAuthPopup } from '../store/authSlice';
+import { toggleAuthPopup } from '../store/authSlice';
 
 const AppointmentList = () => {
   const doctors = useSelector((state) => state.doctor.doctors);
@@ -11,22 +11,16 @@ const AppointmentList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (user) {
-      if (appointments) {
-        dispatch(getDoctors());
-        dispatch(getAppointments(user.id));
-      }
+    if (doctors.length === 0) {
+      dispatch(getDoctors());
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [doctors, dispatch]);
 
   useEffect(() => {
-    if (!user) {
-      dispatch(enableAuthPopup());
+    if (user) {
+      dispatch(getAppointments(user.id));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user, dispatch]);
 
   const padWithZero = (number) => (
     number >= 10
@@ -48,7 +42,7 @@ const AppointmentList = () => {
                       <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
                         Name:
                         {' '}
-                        {doctors[apntmnt.doctor_id - 1] ? doctors[apntmnt.doctor_id - 1].name : ''}
+                        {doctors.find((doctor) => doctor.id === apntmnt.doctor_id).name}
                       </span>
                       <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
                         City:
@@ -84,7 +78,9 @@ const AppointmentList = () => {
       {
         !user && (
           <div className="my-auto text-xl">
-            <h1>You must be signed in to access your appointments</h1>
+            <h1 className="italic">You must be signed in to access your appointments</h1>
+            <button type="button" onClick={() => dispatch(toggleAuthPopup())} className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-full text-white font-semibold flex items-center justify-center gap-2">Sign In</button>
+
           </div>
         )
       }

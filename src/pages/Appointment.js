@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getDoctors } from '../store/doctorSlice';
 import { createAppointment } from '../store/appointmentSlice';
-import { enableAuthPopup } from '../store/authSlice';
+import { toggleAuthPopup } from '../store/authSlice';
 
 const Appointment = () => {
   const doctors = useSelector((state) => state.doctor.doctors);
@@ -13,12 +13,6 @@ const Appointment = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [doctorName, setDoctorName] = useState('');
-
-  useEffect(() => {
-    if (!user) {
-      dispatch(enableAuthPopup());
-    }
-  }, [dispatch, user]);
 
   useEffect(() => {
     if (doctors.length === 0) {
@@ -72,7 +66,7 @@ const Appointment = () => {
                 <div className="w-full relative flex flex-col md:flex-row justify-around items-center">
                   <label htmlFor="doctor" className="flex flex-col w-11/12 md:w-1/6">
                     Select a Doctor:
-                    <select data-testid="doctor" name="doctor" id="doctor" value={doctorName} onChange={(e) => setDoctorName(e.target.value)} className="text-left px-2 bg-ligthgray py-2.5 border border-citrus-600 rounded-lg">
+                    <select data-testid="doctor" name="doctor" id="doctor" value={doctorName} onChange={(e) => setDoctorName(e.target.value)} className="text-left">
                       {
                         doctors.map((doctor) => (
                           <option
@@ -88,7 +82,7 @@ const Appointment = () => {
                   </label>
                   <label htmlFor="city" className="flex flex-col w-11/12 md:w-min">
                     Select a City:
-                    <input required data-testid="city" placeholder="Select City" type="text" id="city" className="bg-gray-100 p-2 border border-citrus-500 focus:outline-none focus:border-2 focus:border-citrus-600 rounded-lg" />
+                    <input required data-testid="city" placeholder="Select City" type="text" id="city" />
                   </label>
                   <label htmlFor="date" className="flex flex-col w-11/12 md:w-min">
                     Select a Date:
@@ -98,11 +92,10 @@ const Appointment = () => {
                       data-testid="date"
                       type="datetime-local"
                       id="datetime"
-                      className="bg-gray-100 p-2 border border-citrus-500 focus:outline-none focus:border-2 focus:border-citrus-600 rounded-lg"
                     />
                   </label>
                 </div>
-                <input type="submit" data-testid="submit" value="Submit" className="mt-20 w-1/2 md:w-1/5 inline-block py-4 bg-citrus-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-citrus-700 hover:shadow-lg focus:bg-citrus-700 transition duration-150 ease-in-out" />
+                <button type="submit" data-testid="submit" className="mt-20 w-1/2 text-center md:w-1/5 mx-auto h-12 bg-citrus-500 hover:bg-citrus-600 hover:shadow-md text-white px-6 shadow-lg rounded-full font-semibold focus:bg-citrus-700 transition duration-150 ease-in-out">Add Appointment</button>
               </form>
             </div>
           </>
@@ -111,7 +104,8 @@ const Appointment = () => {
       {
         !user && (
           <div className="my-auto text-xl">
-            <h1>You must be signed in to make an appointment</h1>
+            <h1 className="italic">You must be signed in to make an appointment</h1>
+            <button type="button" onClick={() => dispatch(toggleAuthPopup())} className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-full text-white font-semibold flex items-center justify-center gap-2">Sign In</button>
           </div>
         )
       }

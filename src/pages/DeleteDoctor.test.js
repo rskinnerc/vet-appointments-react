@@ -10,10 +10,10 @@ import { signInUser } from '../store/authSlice';
 import { getDoctors } from '../store/doctorSlice';
 
 describe('the delete doctors page', () => {
-  it('should not allow a non-authenticated user to delete a doctor', async () => {
+  it('should not allow a non-authenticated user to DELETE A DOCTOR', async () => {
     render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/doctors/delete']}>
+        <MemoryRouter initialEntries={['/delete-doctors']}>
           <App />
         </MemoryRouter>
       </Provider>,
@@ -31,13 +31,13 @@ describe('the delete doctors page', () => {
     it('should show a list of doctors to delete', async () => {
       render(
         <Provider store={store}>
-          <MemoryRouter initialEntries={['/doctors/delete']}>
+          <MemoryRouter initialEntries={['/delete-doctors']}>
             <App />
           </MemoryRouter>
         </Provider>,
       );
 
-      expect(await screen.findByText('Delete a Doctor')).toBeInTheDocument();
+      expect(await screen.findByText('DELETE A DOCTOR')).toBeInTheDocument();
       expect(await screen.findByText('John Doe', { exact: false })).toBeInTheDocument();
       expect(await screen.findByText('Jane Doe', { exact: false })).toBeInTheDocument();
     });
@@ -45,7 +45,7 @@ describe('the delete doctors page', () => {
     it('should show a list of doctors to delete', async () => {
       render(
         <Provider store={store}>
-          <MemoryRouter initialEntries={['/doctors/delete']}>
+          <MemoryRouter initialEntries={['/delete-doctors']}>
             <App />
           </MemoryRouter>
         </Provider>,
@@ -60,7 +60,7 @@ describe('the delete doctors page', () => {
       });
 
       await waitFor(() => {
-        expect(screen.queryByText('Delete a Doctor')).not.toBeNull();
+        expect(screen.queryByText('DELETE A DOCTOR')).not.toBeNull();
         expect(screen.queryByText('John Doe')).toBeNull();
         expect(screen.queryByText('Jane Doe')).toBeNull();
         expect(screen.queryByText('There are no doctors. Please add a new one.', { exact: false })).not.toBeNull();

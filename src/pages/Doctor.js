@@ -18,7 +18,7 @@ const Doctor = () => {
   }
 
   return (
-    <section className="flex flex-col w-full md:flex-row md:px-10 xl:p-36 md:gap-5 2xl:gap-36 md:items-start md:pt-24">
+    <section className="flex lg:w-10/12 flex-col w-full md:flex-row md:px-10 xl:p-36 md:gap-5 2xl:gap-36 md:items-start md:pt-24">
       <img src={doctor.photo_path || `https://via.placeholder.com/480x480?text=${doctor.name}`} alt={doctor.name} className="rounded-full sm:w-10/12 sm:mx-auto md:w-2/5 aspect-square xl:w-1/2 p-2 my-8" />
       <div className="m-2 md:w-3/5 xl:w-1/2">
         <h1 className="text-right text-3xl font-semibold">

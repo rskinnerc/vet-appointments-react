@@ -5,7 +5,9 @@
 @layer base {
   input[type="text"],
   input[type="number"],
-  textarea {
-    @apply border bg-stone-200 h-12 rounded-lg text-stone-800 px-2 placeholder:text-stone-500 focus:outline-amber-500;
+  textarea,
+  select,
+  input[type="datetime-local"] {
+    @apply bg-gray-100 p-2 border border-citrus-500 focus:outline-none focus:border-2 focus:border-citrus-600 rounded-lg;
   }
 }

@@ -18,11 +18,11 @@ const NavMenu = () => {
         <NavLink className={activeLink} to="/doctors">VETS</NavLink>
         <NavLink className={activeLink} to="/new-appointment">MAKE AN APPOINTMENT</NavLink>
         <NavLink className={activeLink} to="/appointments">MY APPOINTMENTS</NavLink>
-        <NavLink className={activeLink} to="/doctors/new">ADD VET</NavLink>
-        <NavLink className={activeLink} to="/doctors/delete">DELETE VET</NavLink>
+        <NavLink className={activeLink} to="/new-doctor">ADD VET</NavLink>
+        <NavLink className={activeLink} to="/delete-doctors">DELETE VET</NavLink>
       </nav>
       {user && (
-        <button type="button" className="bg-red-500 rounded-md self-center p-2 text-white font-semibold mt-32" onClick={() => dispatch(signOut())}>
+        <button type="button" className="bg-red-500 rounded-full px-12 self-center py-2 text-white font-semibold mt-32" onClick={() => dispatch(signOut())}>
           Sign Out
         </button>
       )}
