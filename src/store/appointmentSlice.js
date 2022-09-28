@@ -29,8 +29,7 @@ export const createAppointment = createAsyncThunk(
       method: 'POST',
     });
 
-    const data = await response.json();
-    return data;
+    return response.status === 200 ? response.text() : response.json();
   },
 );
 
@@ -47,6 +46,10 @@ export const appointmentSlice = createSlice({
     [getAppointments.fulfilled]: (state, action) => {
       state.status = 'Success';
       state.appointments = [...action.payload];
+    },
+    [createAppointment.fulfilled]: (state, action) => {
+      state.status = 'Success';
+      state.appointments.push(action.meta.arg);
     },
   },
 });
