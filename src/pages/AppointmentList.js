@@ -48,7 +48,7 @@ const AppointmentList = () => {
                       <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
                         Name:
                         {' '}
-                        {doctors[apntmnt.doctor_id - 1] ? doctors[apntmnt.doctor_id - 1].name : ''}
+                        {doctors.find((doctor) => doctor.id === apntmnt.doctor_id).name}
                       </span>
                       <span className="w-full lg:w-1/2 md:pl-16 lg:pl-24">
                         City:
