@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAppointments } from '../store/appointmentSlice';
 import { getDoctors } from '../store/doctorSlice';
-import { enableAuthPopup } from '../store/authSlice';
+import { toggleAuthPopup } from '../store/authSlice';
 
 const AppointmentList = () => {
   const doctors = useSelector((state) => state.doctor.doctors);
@@ -20,13 +20,6 @@ const AppointmentList = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
-
-  useEffect(() => {
-    if (!user) {
-      dispatch(enableAuthPopup());
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const padWithZero = (number) => (
     number >= 10
@@ -85,6 +78,8 @@ const AppointmentList = () => {
         !user && (
           <div className="my-auto text-xl">
             <h1>You must be signed in to access your appointments</h1>
+            <button type="button" onClick={() => dispatch(toggleAuthPopup())} className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-md text-white font-semibold flex items-center justify-center gap-2">Sign In</button>
+
           </div>
         )
       }
