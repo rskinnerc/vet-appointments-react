@@ -11,18 +11,22 @@ const AppointmentList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDoctors());
+    if (user) {
+      if (appointments) {
+        dispatch(getDoctors());
+        dispatch(getAppointments(user.id));
+      }
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (!user) {
       dispatch(enableAuthPopup());
-    } else {
-      dispatch(getAppointments(user.id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, []);
 
   const padWithZero = (number) => (
     number >= 10
