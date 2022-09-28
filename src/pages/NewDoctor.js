@@ -48,7 +48,7 @@ const NewDoctor = () => {
 
   return (
     <section className="w-full lg:w-10/12">
-      <h1 className="text-3xl font-semibold text-center my-12">Add a Doctor</h1>
+      <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold text-center mt-16 lg:mt-36 mb-12">ADD A DOCTOR</h1>
       <form onSubmit={submit} className="flex flex-col gap-2 px-1 md:w-4/6 lg:w-1/2 2xl:w-1/3 mx-auto">
         <input className="h-12" type="text" id="name" name="name" placeholder="Name" onChange={(e) => setName(e.target.value)} />
         <input className="h-12" type="text" id="specialization" name="specialization" placeholder="Specialization" onChange={(e) => setSpecialization(e.target.value)} />

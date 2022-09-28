@@ -13,7 +13,7 @@ describe('the add new doctor page', () => {
   it('should not allow a non-authenticated user to create a new doctor', async () => {
     render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/doctors/new']}>
+        <MemoryRouter initialEntries={['/new-doctor']}>
           <App />
         </MemoryRouter>
       </Provider>,
@@ -30,13 +30,13 @@ describe('the add new doctor page', () => {
     it('should show the form to add a new doctor', async () => {
       render(
         <Provider store={store}>
-          <MemoryRouter initialEntries={['/doctors/new']}>
+          <MemoryRouter initialEntries={['/new-doctor']}>
             <App />
           </MemoryRouter>
         </Provider>,
       );
 
-      expect(await screen.findByText('Add a Doctor')).toBeInTheDocument();
+      expect(await screen.findByText('ADD A DOCTOR')).toBeInTheDocument();
       expect(await screen.findByPlaceholderText('Name', { exact: false })).toBeInTheDocument();
       expect(await screen.findByPlaceholderText('Specialization', { exact: false })).toBeInTheDocument();
       expect(await screen.findByPlaceholderText('Years of experience', { exact: false })).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe('the add new doctor page', () => {
       const user = userEvent.setup();
       render(
         <Provider store={store}>
-          <MemoryRouter initialEntries={['/doctors/new']}>
+          <MemoryRouter initialEntries={['/new-doctor']}>
             <App />
           </MemoryRouter>
         </Provider>,

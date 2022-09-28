@@ -26,7 +26,7 @@ const DeleteDoctor = () => {
 
   return (
     <section className="w-full lg:w-10/12">
-      <h1 className="text-3xl font-semibold text-center my-12">Delete a Doctor</h1>
+      <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold text-center mt-16 lg:mt-36 mb-12">DELETE A DOCTOR</h1>
       {doctors.length === 0 && (
         <p className="text-l font-semibold italic text-center my-24">There are no doctors. Please add a new one.</p>
       )}
