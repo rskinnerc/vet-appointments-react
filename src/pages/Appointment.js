@@ -66,7 +66,7 @@ const Appointment = () => {
                 <div className="w-full relative flex flex-col md:flex-row justify-around items-center">
                   <label htmlFor="doctor" className="flex flex-col w-11/12 md:w-1/6">
                     Select a Doctor:
-                    <select data-testid="doctor" name="doctor" id="doctor" value={doctorName} onChange={(e) => setDoctorName(e.target.value)} className="text-left px-2 bg-ligthgray py-2.5 border border-citrus-600 rounded-lg">
+                    <select data-testid="doctor" name="doctor" id="doctor" value={doctorName} onChange={(e) => setDoctorName(e.target.value)} className="text-left">
                       {
                         doctors.map((doctor) => (
                           <option
@@ -82,7 +82,7 @@ const Appointment = () => {
                   </label>
                   <label htmlFor="city" className="flex flex-col w-11/12 md:w-min">
                     Select a City:
-                    <input required data-testid="city" placeholder="Select City" type="text" id="city" className="bg-gray-100 p-2 border border-citrus-500 focus:outline-none focus:border-2 focus:border-citrus-600 rounded-lg" />
+                    <input required data-testid="city" placeholder="Select City" type="text" id="city" />
                   </label>
                   <label htmlFor="date" className="flex flex-col w-11/12 md:w-min">
                     Select a Date:
@@ -92,7 +92,6 @@ const Appointment = () => {
                       data-testid="date"
                       type="datetime-local"
                       id="datetime"
-                      className="bg-gray-100 p-2 border border-citrus-500 focus:outline-none focus:border-2 focus:border-citrus-600 rounded-lg"
                     />
                   </label>
                 </div>
