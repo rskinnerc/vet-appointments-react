@@ -11,15 +11,16 @@ const AppointmentList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (user) {
-      if (appointments) {
-        dispatch(getDoctors());
-        dispatch(getAppointments(user.id));
-      }
+    if (doctors.length === 0) {
+      dispatch(getDoctors());
     }
+  }, [doctors, dispatch]);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  useEffect(() => {
+    if (user) {
+      dispatch(getAppointments(user.id));
+    }
+  }, [user, dispatch]);
 
   const padWithZero = (number) => (
     number >= 10

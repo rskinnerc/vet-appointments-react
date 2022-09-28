@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getDoctors } from '../store/doctorSlice';
 import { createAppointment } from '../store/appointmentSlice';
-import { enableAuthPopup } from '../store/authSlice';
+import { toggleAuthPopup } from '../store/authSlice';
 
 const Appointment = () => {
   const doctors = useSelector((state) => state.doctor.doctors);
@@ -13,12 +13,6 @@ const Appointment = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [doctorName, setDoctorName] = useState('');
-
-  useEffect(() => {
-    if (!user) {
-      dispatch(enableAuthPopup());
-    }
-  }, [dispatch, user]);
 
   useEffect(() => {
     if (doctors.length === 0) {
@@ -112,6 +106,7 @@ const Appointment = () => {
         !user && (
           <div className="my-auto text-xl">
             <h1>You must be signed in to make an appointment</h1>
+            <button type="button" onClick={() => dispatch(toggleAuthPopup())} className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-md text-white font-semibold flex items-center justify-center gap-2">Sign In</button>
           </div>
         )
       }
