@@ -76,7 +76,6 @@ export const doctorSlice = createSlice({
     builder.addCase(deleteDoctor.fulfilled, (state, action) => {
       state.status = action.payload;
       state.doctors = state.doctors.filter((doctor) => doctor.id !== action.meta.arg);
-      console.log('state.doctors', state.doctors);
     });
   },
 });

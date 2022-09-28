@@ -34,6 +34,10 @@ const handlers = [
     ctx.json('Successfully created'),
   )),
 
+  rest.delete(`${process.env.REACT_APP_API_HOST}/doctors/delete`, async (req, res, ctx) => res(
+    ctx.json('Successfully deleted'),
+  )),
+
   rest.get(`${process.env.REACT_APP_API_HOST}/users/2/appointments`, (req, res, ctx) => res(
     ctx.json([
       {

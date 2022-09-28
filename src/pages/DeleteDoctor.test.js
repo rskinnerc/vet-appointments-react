@@ -1,5 +1,5 @@
 import {
-  render, screen,
+  render, screen, waitFor,
 } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -59,10 +59,12 @@ describe('the delete doctors page', () => {
         doctor2.click();
       });
 
-      expect(await screen.findByText('Delete a Doctor')).toBeInTheDocument();
-      expect(await screen.findByText('John Doe', { exact: false })).not.toBeInTheDocument();
-      expect(await screen.findByText('Jane Doe', { exact: false })).not.toBeInTheDocument();
-      expect(await screen.findByText('There are no doctors. Please add a new one.', { exact: false })).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.queryByText('Delete a Doctor')).not.toBeNull();
+        expect(screen.queryByText('John Doe')).toBeNull();
+        expect(screen.queryByText('Jane Doe')).toBeNull();
+        expect(screen.queryByText('There are no doctors. Please add a new one.', { exact: false })).not.toBeNull();
+      });
     });
   });
 });
