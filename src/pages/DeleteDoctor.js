@@ -26,17 +26,22 @@ const DeleteDoctor = () => {
 
   return (
     <section className="w-full">
-      <h1>Delete a Doctor</h1>
+      <h1 className="text-3xl font-semibold text-center my-12">Delete a Doctor</h1>
       {doctors.length === 0 && (
         <p className="text-l font-semibold italic text-center my-24">There are no doctors. Please add a new one.</p>
       )}
       {doctors.length > 0 && (
-        <ul>
+        <ul className="flex flex-col gap-5 px-1 md:w-4/6 lg:w-1/2 2xl:w-1/3 mx-auto">
           {doctors.map((doctor) => (
-            <li key={doctor.id}>
-              <span>{doctor.name}</span>
+            <li key={doctor.id} className="shadow rounded-md shadow-amber-500/40 p-3 flex justify-between">
+              <div>
+                <span className="block font-semibold">{doctor.name}</span>
+                <span className="block italic text-sm text-stone-500">{doctor.specialization}</span>
+              </div>
               {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-              <button type="button" data-testid={`doctor-${doctor.id}`} onClick={() => dispatch(deleteDoctor(doctor.id))}><IoTrash /></button>
+              <button type="button" data-testid={`doctor-${doctor.id}`} onClick={() => dispatch(deleteDoctor(doctor.id))}>
+                <IoTrash className="text-red-600 text-2xl" />
+              </button>
             </li>
           ))}
         </ul>
