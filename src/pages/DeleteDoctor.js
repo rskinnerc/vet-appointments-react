@@ -17,7 +17,7 @@ const DeleteDoctor = () => {
 
   if (!user) {
     return (
-      <section className="w-full flex flex-col justify-center items-center">
+      <section className="w-full lg:w-10/12 flex flex-col justify-center items-center">
         <p className="text-center italic text-xl">You are not authorized to perform this actions. Please Sign in.</p>
         <button type="button" onClick={() => dispatch(toggleAuthPopup())} className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-full text-white font-semibold flex items-center justify-center gap-2">Sign In</button>
       </section>
@@ -25,7 +25,7 @@ const DeleteDoctor = () => {
   }
 
   return (
-    <section className="w-full">
+    <section className="w-full lg:w-10/12">
       <h1 className="text-3xl font-semibold text-center my-12">Delete a Doctor</h1>
       {doctors.length === 0 && (
         <p className="text-l font-semibold italic text-center my-24">There are no doctors. Please add a new one.</p>
