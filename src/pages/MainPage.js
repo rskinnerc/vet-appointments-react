@@ -28,7 +28,7 @@ const MainPage = () => {
               <div className="flex justify-center p-2" key={doctor.id}>
                 <div className="max-w-sm hover:scale-105 ease-in-out duration-300 flex flex-col items-center">
                   <Link to={`/doctors/${doctor.id}`}>
-                    <img className="rounded-full w-60 h-60 max-w-fit" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="Avatar" />
+                    <img className="rounded-full w-60 h-60 max-w-fit" src={doctor.photo_path || `https://via.placeholder.com/480x480?text=${doctor.name}`} alt={doctor.name} />
                     <div className="p-6 mt-2 text-center">
                       <h5 className="text-gray-900 text-2xl font-medium mb-5">{doctor.name}</h5>
                       <p title="description" className="text-gray-700 text-sm mb-2 whitespace-normal">
