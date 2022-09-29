@@ -19,7 +19,7 @@ describe('the add new doctor page', () => {
       </Provider>,
     );
 
-    expect(await screen.findByText('You are not authorized to perform this actions. Please Sign in.')).toBeInTheDocument();
+    expect(await screen.findByText('You are not authorized to perform this action. Please Sign in.')).toBeInTheDocument();
   });
 
   describe('signed in user', () => {

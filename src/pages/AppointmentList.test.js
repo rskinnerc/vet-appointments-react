@@ -21,7 +21,7 @@ describe('the Appointments list page', () => {
       </Provider>,
     );
 
-    expect(await screen.findByTitle('appointments')).toBeInTheDocument();
+    expect(await screen.findByTestId('title')).toBeInTheDocument();
   });
 
   it('should show the list of appointments for the user', async () => {

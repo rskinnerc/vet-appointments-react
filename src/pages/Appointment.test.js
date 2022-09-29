@@ -21,7 +21,7 @@ describe('the create appointment page', () => {
       </Provider>,
     );
 
-    expect(await screen.findByTitle('create-appointment')).toBeInTheDocument();
+    expect(await screen.findByTestId('title')).toBeInTheDocument();
   });
 
   it('should display the doctor, city and date input', async () => {
