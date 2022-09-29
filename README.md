@@ -12,7 +12,15 @@ This is an app in which you can reserve an appointment with a Veterinarian, crea
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo](https://vet-appointments.deply.cyou/)
+
+## App Screenshots
+
+![localhost_3000_(360x800 8 97%)](https://user-images.githubusercontent.com/26911718/193125405-4dd3f623-0f27-4d8d-868f-aa78d05d2054.png)
+![localhost_3000_(360x800 8 97%) (1)](https://user-images.githubusercontent.com/26911718/193125414-733b8bcf-443d-4e99-b57f-de45ad323aaf.png)
+![localhost_3000_(360x800 8 97%) (2)](https://user-images.githubusercontent.com/26911718/193125421-8ae990ce-18be-4f14-8378-d0b3cbe8213b.png)
+![localhost_3000_(1280x720 6 05%)](https://user-images.githubusercontent.com/26911718/193125871-3e609a3b-92d3-46b6-8b14-f6981e5e4911.png)
+
 
 ## Getting Started
 
@@ -89,5 +97,5 @@ Wireframe: [mukrat](https://www.behance.net/muratk)
 
 ## 📝 License
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./MIT.md) licensed.
 
