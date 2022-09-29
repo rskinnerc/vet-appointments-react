@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAppointments } from '../store/appointmentSlice';
 import { getDoctors } from '../store/doctorSlice';
@@ -27,6 +28,24 @@ const AppointmentList = () => {
       ? number
       : `0${number}`
   );
+
+  if (!user) {
+    return (
+      <section className="w-full lg:w-10/12 flex flex-col justify-center items-center">
+        <p className="text-center italic text-xl">You are not authorized to perform this actions. Please Sign in.</p>
+        <button type="button" onClick={() => dispatch(toggleAuthPopup())} className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-full text-white font-semibold flex items-center justify-center gap-2">Sign In</button>
+      </section>
+    );
+  }
+
+  if (appointments.length === 0) {
+    return (
+      <section className="w-full lg:w-10/12 flex flex-col justify-center items-center">
+        <p className="text-center italic text-xl">There are no appointments to display. Please create one.</p>
+        <Link to="/new-appointment" className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-full text-white font-semibold flex items-center justify-center gap-2">Add a Doctor</Link>
+      </section>
+    );
+  }
 
   return (
     <section className="flex flex-col items-center w-full lg:w-10/12 pb-20">
@@ -71,15 +90,6 @@ const AppointmentList = () => {
               ))}
             </div>
           </>
-        )
-      }
-      {
-        !user && (
-          <div className="my-auto text-xl">
-            <h1 className="italic">You must be signed in to access your appointments</h1>
-            <button type="button" onClick={() => dispatch(toggleAuthPopup())} className="bg-amber-500 mx-auto my-4 h-10 px-24 self-center rounded-full text-white font-semibold flex items-center justify-center gap-2">Sign In</button>
-
-          </div>
         )
       }
     </section>

@@ -60,7 +60,6 @@ describe('the delete doctors page', () => {
       });
 
       await waitFor(() => {
-        expect(screen.queryByText('DELETE A DOCTOR')).not.toBeNull();
         expect(screen.queryByText('John Doe')).toBeNull();
         expect(screen.queryByText('Jane Doe')).toBeNull();
         expect(screen.queryByText('There are no doctors. Please add a new one.', { exact: false })).not.toBeNull();
